@@ -11,7 +11,8 @@ const Signup = () => {
     const [confirmpassword, setConfirmpassword] = useState()
     const [password, setPassword] = useState()
     const [pic, setPic] = useState()
-    const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false)
+  const [msg,setMsg]=useState("")
     const toast = useToast()
   const history = useHistory();
   const {  setUser } = ChatState();
@@ -94,16 +95,16 @@ const Signup = () => {
       }
       const {data} = await axios.post("api/user",{name,email,password,pic},config)
       toast({
-        title: "Registration Successful",
+        title: "Email has been sent to your mail id , please verify",
         status: "success",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
-      localStorage.setItem('userInfo', JSON.stringify(data))
+      //localStorage.setItem('userInfo', JSON.stringify(data))
       setUser(data);
      setLoading(false)
-     history.push('/chats')
+    // history.push('/chats')
     }catch(error){
       toast({
         title: "Error Occured!",

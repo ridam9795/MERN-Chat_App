@@ -15,6 +15,7 @@ import Lottie from 'react-lottie';
   import animationData from "../animations/typing.json";
 
 const ENDPOINT = "https://sprint-chat-app.herokuapp.com/";
+//const ENDPOINT = "https://localhost:3000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

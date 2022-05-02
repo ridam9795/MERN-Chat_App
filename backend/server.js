@@ -9,7 +9,8 @@ const chatRoutes = require('./routes/chatRoutes')
 const messageRoutes = require('./routes/messageRoutes')
 const path=require('path')
 
-const {notFound,errorHandler} = require('./middleware/errorMiddleware')
+const {notFound,errorHandler} = require('./middleware/errorMiddleware');
+const { verifyEmail } = require('./controllers/userController');
 
 dotenv.config()
 connetDB()
@@ -21,6 +22,7 @@ app.use(express.json()) // to accept json data
 app.use('/api/user',userRoutes)
 app.use('/api/chat', chatRoutes)
 app.use('/api/message', messageRoutes);
+
 // --------------------------deployment------------------------------
 
 const __dirname1 = path.resolve();

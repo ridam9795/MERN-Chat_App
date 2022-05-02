@@ -18,8 +18,11 @@ function Homepage() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
-
-    if (user) history.push("/chats");
+     console.log("Hompage.js user >>>>>>>>>>>>>>>>",user)
+    if (user) {
+      console.log("HomePage>>>>>>>>>>>>>>>>>>>>>>>>>>")
+      history.push("/chats");
+    }
   }, [history]);
 
   return (

@@ -48,19 +48,44 @@ const Login = () => {
       );
 
       // console.log(JSON.stringify(data));
-      toast({
+     
+      if (data.verified === true) {
+          localStorage.setItem("userInfo", JSON.stringify(data));
+      setUser(data);
+      setLoading(false);
+        console.log("user, ", data.name, "verified: ", data.verified)
+         toast({
         title: "Login Successful",
         status: "success",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setUser(data);
-      setLoading(false);
       history.push("/chats");
+      } else {
+         toast({
+        title: "We have sent you a mail on your registered mail id , please verify",
+        status: "info",
+        duration: 10000,
+        isClosable: true,
+        position: "top",
+         });
+        setLoading(false)
+        
+      }
+    
     } catch (error) {
-      toast({
+      if (error.response.status === 400) { 
+ toast({
+        title: "Verify Email",
+        description: error.response.data.message,
+        status: "info",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      } else {
+         toast({
         title: "Error Occured!",
         description: error.response.data.message,
         status: "error",
@@ -68,6 +93,8 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
+      }
+     
       setLoading(false);
     }
   };

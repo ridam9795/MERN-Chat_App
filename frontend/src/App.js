@@ -2,6 +2,7 @@ import './App.css';
 import Homepage from './Pages/Homepage';
 import {Route} from 'react-router-dom';
 import Chatpage from './Pages/Chatpage';
+import EmailVerify from './components/EmailVerify';
 function App() {
   return (
     <div className="App">
@@ -11,7 +12,10 @@ function App() {
   
       <Route path="/chats" component={Chatpage}>
 
-     </Route>
+      </Route>
+      <Route path="/api/user/:id/verify/:token" component={EmailVerify}>
+
+      </Route>
     
     </div>
   );
