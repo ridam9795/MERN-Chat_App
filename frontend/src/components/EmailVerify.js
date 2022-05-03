@@ -24,6 +24,7 @@ const EmailVerify = () => {
 				setValidUrl(false);
 			}
 		};
+		console.log("from EmailVerify.js" + url);
 		verifyEmailUrl();
 	}, [param]);
 
