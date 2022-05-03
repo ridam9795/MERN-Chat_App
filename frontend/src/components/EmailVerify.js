@@ -19,12 +19,13 @@ const EmailVerify = () => {
 				const { data } = await axios.get(url);
 				console.log(data);
 				setValidUrl(true);
+						console.log("from EmailVerify.js" + url);
+
 			} catch (error) {
 				console.log(error);
 				setValidUrl(false);
 			}
 		};
-		console.log("from EmailVerify.js" + url);
 		verifyEmailUrl();
 	}, [param]);
 
