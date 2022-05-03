@@ -30,7 +30,7 @@ const token = await new Token({
 			token: crypto.randomBytes(32).toString("hex"),
 }).save();
     const url = `${process.env.BASE_URL}api/user/${user._id}/verify/${token.token}`;
- //   console.log("url, ",url)
+    console.log("url to register user , inside userControoler.js ",url)
     await sendEmail(user.email, "Verify Email", url);
     res.status(201).send({
           message:"An email sent to your accout please verify"
